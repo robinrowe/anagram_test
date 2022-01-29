@@ -28,6 +28,9 @@ bool AnagramTest::CheckAnagrams(int count,char* words[])
     anagram.resize(count);
     fill(anagram.begin(),anagram.end(),false);
     anagram[0] = true;
+    // Due to SSO (Short String Optimization) there is typically no heap allocation for small strings,
+    // that the STL will have 10 to 20 bytes allocated in the string object typically. However, longer
+    // strings will create a heap allocation and global lock, such that optimization in C may be better.
     string baseWord = words[0];
     sort(baseWord.begin(),baseWord.end());
     for(unsigned i=0;i<count;i++)
