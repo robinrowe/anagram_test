@@ -46,4 +46,11 @@ TTFTF
 cat atc tacc tac dog
 anagram_test done!
 
+$ ./build/Debug/anagram_test.exe tut ttu tuc tutt dog
+anagram_test starting...
+Checking anagrams of tut:
+TTFFF
+tut ttu tuc tutt dog
+anagram_test done!
+
 */

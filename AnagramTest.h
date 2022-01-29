@@ -21,6 +21,24 @@ class AnagramTest
 		baseWord = word;
 	    sort(baseWord.begin(),baseWord.end());
 	}
+	bool IsSameSize(const char* testWord) const
+	{	return baseWord.size() == strlen(testWord);
+	}
+	bool IsLetterRepeats(size_t i) const
+	{	return baseWord[i] == baseWord[i+1];
+	}
+	bool CheckWord(const char* testWord)
+	{   if(!IsSameSize(testWord))
+        {   return false;
+        }
+        std::string word(testWord);
+        std::sort(word.begin(),word.end()); 
+        if(baseWord != word)
+        {   return false;
+        }
+		return true;
+	}
+	bool CheckWord2(const char* testWord);
 public:
 	~AnagramTest()
 	{}

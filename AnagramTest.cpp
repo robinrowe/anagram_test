@@ -25,20 +25,33 @@ bool AnagramTest::CheckAnagrams(int count,char* words[])
     {   return false;
     }
     Reset(count,words[0]);
-    const size_t length = strlen(words[0]);
     anagram[0] = true;// always an anagram of itself
-    // Due to SSO (Short String Optimization) there is typically no heap allocation for small strings,
+    // Due to SSO (Short String Optimization) there is typically no heap allocation for a small std::string,
     // that the STL will have 10 to 20 bytes allocated in the string object typically. However, longer
     // strings will create a heap allocation and global lock, such that optimization in C may be better.
-
     for(size_t i=1;i<count;i++)
-    {   if(length != strlen(words[i]))
-        {   continue;
-        }
-        string word = words[i];
-        sort(word.begin(),word.end());
-        if(baseWord != word)
+    {   if(!CheckWord2(words[i]))
         {   continue;
         }
         anagram[i] = true;
 }   }
+
+// Optimization of CheckWord() above:
+bool AnagramTest::CheckWord2(const char* testWord)
+{	if(!IsSameSize(testWord))
+    {   return false;
+    }
+	const char* match = testWord;
+	for(size_t i=0;i<baseWord.size();i++)
+	{	match = strchr(match,baseWord[i]);
+		if(!match)
+		{	return false;
+		}
+		if(IsLetterRepeats(i))
+		{	match++;
+			continue;
+		}
+		match = testWord;
+	}
+	return true;
+}
