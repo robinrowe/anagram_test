@@ -7,7 +7,7 @@
 using namespace std;
 
 void Usage()
-{	cout << "Usage: anagram_test string1 string2..." << endl;
+{	cout << "Usage: anagram_test word1 word2..." << endl;
 }
 
 enum
