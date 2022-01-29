@@ -22,17 +22,17 @@ int main(int argc,char* argv[])
 	{	Usage();
 		return invalid_args;
 	}
-	cout << "Checking anagrams of " << argv[1] << ":";
-	for(size_t i=1;i<argc;i++)
-	{	cout << " " << argv[i];
-	}
-	cout << endl;
+	cout << "Checking anagrams of " << argv[1] << ":" << endl;
 	AnagramTest anagramTest;
 	if(!anagramTest.CheckAnagrams(argc-1,argv+1))
 	{	cout << "invalid data" << endl;
 		return invalid_args;
 	}
 	cout << anagramTest << endl;
+	for(size_t i=1;i<argc;i++)
+	{	cout << argv[i] << " ";
+	}
+	cout << endl;
 	cout << "anagram_test done!" << endl;
 	return ok;
 }
@@ -41,8 +41,9 @@ int main(int argc,char* argv[])
 
 $ ./build/Debug/anagram_test.exe cat atc tacc tac dog
 anagram_test starting...
-Checking anagrams of cat: cat atc tacc tac dog
+Checking anagrams of cat:
 TTFTF
+cat atc tacc tac dog
 anagram_test done!
 
 */

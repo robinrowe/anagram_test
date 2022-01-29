@@ -7,13 +7,21 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 class AnagramTest
-{	AnagramTest(const AnagramTest&) = delete;
-	void operator=(const AnagramTest&) = delete;
-
-public:
+{	std::string baseWord;
 	std::vector<bool> anagram; 
+	AnagramTest(const AnagramTest&) = delete;
+	void operator=(const AnagramTest&) = delete;
+	void Reset(size_t count,const char* word)
+	{   anagram.resize(count);
+		anagram.assign(count,false);
+		//fill(anagram.begin(),anagram.end(),false); // alternative to assign()
+		baseWord = word;
+	    sort(baseWord.begin(),baseWord.end());
+	}
+public:
 	~AnagramTest()
 	{}
 	AnagramTest()
