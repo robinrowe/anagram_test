@@ -37,7 +37,7 @@ bool AnagramTest::CheckAnagrams(int count,char* words[])
 }   }
 
 // Optimization alternative used instead of CheckWord():
-bool AnagramTest::CheckWord2(const char* testWord)
+bool AnagramTest::CheckWord2(const char* testWord) const
 {	if(!IsSameSize(testWord))
     {   return false;
     }

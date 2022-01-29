@@ -27,7 +27,8 @@ class AnagramTest
 	bool IsLetterRepeats(size_t i) const
 	{	return baseWord[i] == baseWord[i+1];
 	}
-	bool CheckWord(const char* testWord)
+	// CheckWord() has been replaced by optimized CheckWord2()
+	bool CheckWord(const char* testWord) const
 	{   if(!IsSameSize(testWord))
         {   return false;
         }
@@ -38,7 +39,7 @@ class AnagramTest
         }
 		return true;
 	}
-	bool CheckWord2(const char* testWord);
+	bool CheckWord2(const char* testWord) const;
 public:
 	~AnagramTest()
 	{}
